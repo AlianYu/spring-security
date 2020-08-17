@@ -1,3 +1,4 @@
+/*
 package com.springsecurity.springsecurity2.config;
 
 import org.springframework.context.annotation.Bean;
@@ -10,24 +11,30 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
+*/
 /**
  * @ClassName BrowserSecurityConfig
  * @Description
  * @Author Administrator
  * @Date 2020/8/13 15:21
  * @Version 1.0
- */
-@Configuration
+ *//*
+
+//@Configuration
 public class BrowserSecurityConfig extends  WebSecurityConfigurerAdapter{
-    /**
+    */
+/**
      * 登录验证及资源访问的权限规则
      * @param http
      * @throws Exception
-     */
+     *//*
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //http认证
-        /*http.httpBasic().and().authorizeRequests().anyRequest().permitAll().and();*/
+        */
+/*http.httpBasic().and().authorizeRequests().anyRequest().permitAll().and();*//*
+
 
         //表单认证
         // 表单登录，而不是httpBasic
@@ -46,11 +53,13 @@ public class BrowserSecurityConfig extends  WebSecurityConfigurerAdapter{
                 .anyRequest().authenticated();
     }
 
-    /**
+    */
+/**
      * 用户及角色信息配置
      * @param auth
      * @throws Exception
-     */
+     *//*
+
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
@@ -68,13 +77,16 @@ public class BrowserSecurityConfig extends  WebSecurityConfigurerAdapter{
         return new BCryptPasswordEncoder();
     }
 
-    /**
+    */
+/**
      * 开放静态资源
      * @param web
-     */
+     *//*
+
     @Override
     public void configure(WebSecurity web) {
         //将项目中静态资源路径开放出来
         web.ignoring().antMatchers( "/css/**", "/fonts/**", "/img/**", "/js/**");
     }
 }
+*/

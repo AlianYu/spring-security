@@ -1,12 +1,20 @@
 package com.springsecurity.springsecurity2.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.springsecurity.springsecurity2.Service.UserService;
 import com.springsecurity.springsecurity2.bean.User;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class HelloController {
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/hello/test1")
     public String hello(){
@@ -20,9 +28,18 @@ public class HelloController {
 
 
     @GetMapping("/http/index")
-    public String hello4(){
+    public String hello4(String username){
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("username",username);
+        List<User> list = userService.getUserByUserName(queryWrapper);
+        for (User user : list){
+            System.out.println(user);
+        }
+
         return "你";
     }
+
+
 
     /**
      * 登录的提交接口
