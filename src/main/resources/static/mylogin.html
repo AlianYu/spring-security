@@ -3,23 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
+    <script src="https://cdn.staticfile.org/jquery/1.12.3/jquery.min.js"></script>
 </head>
 <body>
 <h3>表单登录</h3>
-<form action="/validate/mylogin" method="post">
+<form  method="post" action="/validate/mylogin" >
     <table>
         <tr>
             <td>用户名:</td>
-            <td><input type="text" name="username"></td>
+            <td><input type="text" name="username" id="username"></td>
         </tr>
         <tr>
             <td>密码:</td>
-            <td><input type="password" name="password"></td>
+            <td><input type="password" name="password" id="password"></td>
         </tr>
         <tr>
             <td colspan="2"><button type="submit">登录</button></td>
+            <!--<input type="button" onclick="login()" value="登陆">-->
         </tr>
     </table>
 </form>
+<!--<script>
+    function login() {
+        var username = $("#username").val();
+        var password = $("#password").val();
+        if (username === "" || password === "") {
+            alert('用户名或密码不能为空');
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/validate/mylogin",
+            data: {
+                "username": username,
+                "password": password
+            },
+            success: function (json) {
+                if(json.isok){
+                    json.href = '/index';
+                }else{
+                    alert(json.message)
+                }
+            },
+            error: function (e) {
+                console.log(e.responseText);
+            }
+        });
+    }
+</script>-->
 </body>
 </html>
